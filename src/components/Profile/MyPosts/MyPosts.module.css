@@ -5,3 +5,20 @@
 .posts{
     margin-top: 10px;
 }
+
+.titleMyPosts{
+    color: #0006ff;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.divMyPostsTexarea{
+    margin-bottom: 7px;
+}
+
+.buttonMyPosts{
+    background: #ff0000b3;
+    border: 0;
+}

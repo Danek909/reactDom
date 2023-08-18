@@ -1,0 +1,30 @@
+.userPhoto{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    margin-left: 20px;
+}
+
+.divButtonUsers{
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.divButtonUsers button{
+    background: #7e7c7c;
+    border: 0;
+}
+
+.divTextUsers{
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    color: #d0c5c5;
+}
+
+.selectetPage{
+    font-weight: bold;
+}

@@ -1,5 +1,6 @@
 .item{
-    color: yellow;
+    color: white;
+    margin-bottom: 15px;
   }
 
   .item img {
@@ -7,4 +8,7 @@
     height: 50px;
     border-radius: 50%;
   }
-  
+
+  .spanPost{
+    color: cyan;
+  }

@@ -3,19 +3,38 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.dialogsItems{
-    padding: 10px;
+.dialogsItems a {
+    padding-left: 20px;
     color: white;
+    text-decoration: none;
 }
 
 .dialogsItems .active{
     color: gold;
+    margin-top: 14px;
 }
 
 .messages{
+    color: #03ff00;
     padding: 10px;
 }
 
-.messages .message{
+.message{
+    color: red;
+}
+
+.message .messages{
    color: white;
+}
+
+.dialogsButton{
+    background: #03ff00;
+    color: blue;
+    border: 0;
+    width: 60px;
+    height: 20px;
+}
+
+.divDialogsTextarea{
+    margin-bottom: 10px;
 }

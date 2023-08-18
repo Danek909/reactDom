@@ -7,7 +7,7 @@ const Post = (props) => {
       <img src="https://media.tenor.com/zFmI-Uimgm0AAAAi/bean-mister-bean.gif" alt='deletet' />
       {props.message}
       <div>
-        <span>Like 10</span>
+        <span className={s.spanPost}>Like 10</span>
       </div>
     </div>
   )
