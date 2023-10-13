@@ -1,4 +1,8 @@
 import React from 'react';
+import { Form, Navigate } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
+import { maxLenghtCreator, required } from '../../utils/validators';
+import { TexArea } from './common/FormsControl';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
@@ -6,20 +10,16 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
-
     let state = props.dialogsPage;
     let dialogsElements = state.dialogs.map(d => <DialogItem key={'dialogItem' + d.id} name={d.name} id={d.id} />);
     let messagesElements = state.messages.map(m => <Message key={'mesage' + m.id} message={m.message} />);
-    let newMessageBody = state.messagebody;
+    let newMessageBody = state.newMessageBody;
 
-    let onSendMessageClick = () => {
-        props.sendMessage()
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newMessageBody)
     }
 
-    let onNewMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageBody(body)
-    }
+    if (!props.isAuth) return <Navigate to="/login" />
 
     return (
         <div className={s.dialogs}>
@@ -28,18 +28,11 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 <div>{messagesElements}</div>
-                <div>
-                    <div className={s.divDialogsTextarea}><textarea value={newMessageBody}
-                        placeholder='Enter your message'
-                        onChange={onNewMessageChange}>
-                        </textarea>
-                    </div>
-
-                    <div><button className={s.dialogsButton} onClick={onSendMessageClick} >send</button></div>
-                </div>
+                <addNewMessage  onSubmit={addNewMessage}/>
             </div>
         </div>
     )
 };
+
 
 export default Dialogs;

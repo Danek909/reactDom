@@ -1,7 +1,25 @@
 import React from 'react';
-import { addPostActionCreator, updeteNewPostTextActionCreator } from '../../../redux/profile-reducer';
+import { Field, reduxForm } from 'redux-form';
+import { maxLenghtCreator, required } from '../../../utils/validators';
+import { TexArea } from '../../Dialogs/common/FormsControl';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+
+export const MaxLenght10 = maxLenghtCreator(10);
+
+const AddNewPostForm = (props) => {
+  return <form onSubmit={props.handleSubmit}>
+    <div>
+      <Field name="newPostText" component={TexArea} placeholder={"Post message"}
+      validate={[required, MaxLenght10]} />
+    </div>
+    <div>
+      <button className={s.buttonMyPosts}>Add post</button>
+    </div>
+  </form>;
+}
+
+const AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(AddNewPostForm);
 
 const MyPosts = (props) => {
   console.log(props)
@@ -9,27 +27,14 @@ const MyPosts = (props) => {
 
   let newPostElement = React.createRef();
 
-  let onAddPost = () => {
-    props.addPost();
+  let onAddPost = (values) => {
+    props.addPost(values.NewPostText);
   }
-
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
-    props.updeteNewPostText(text);
-  }
-
 
   return (
     <div className={s.postsBlock}>
       <h3 className={s.titleMyPosts}>My post</h3>
-      <div>
-        <div className={s.divMyPostsTexarea}>
-          <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
-        </div>
-        <div>
-          <button className={s.buttonMyPosts} onClick={onAddPost}>Add post</button>
-        </div>
-      </div>
+      <AddNewPostFormRedux onSubmit={onAddPost} />
       <div className={s.posts}>
         {postsElements}
       </div>
