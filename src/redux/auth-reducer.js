@@ -34,7 +34,6 @@ export const getAuthUserData = () => (dispatch) => {
         }
 
     });
-    return "Danya"
 }
 
 export const login = (email, password, rememberMe,) => (dispatch) => {
