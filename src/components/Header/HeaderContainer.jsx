@@ -15,4 +15,4 @@ const MapStateToProps = (state) => ({
   login: state.auth.login,
 });
 
-export default connect(MapStateToProps, {logout })(HeaderComntainer);
+export default connect(MapStateToProps, {getAuthUserData, logout })(HeaderComntainer);

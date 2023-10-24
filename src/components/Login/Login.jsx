@@ -38,11 +38,13 @@ const Loginform = (props) => {
 const LoginReduxForm = reduxForm ({form: 'login'})(Loginform)
 
 const Login = (props) => {
+
+    console.log(props, "props")
     const onSubmit = (formData) => { 
         props.login(formData.email, formData.password, formData.rememberMe);
     }
 
-    if(props.isAuth) {
+    if (props.isAuth) {
         return redirect ("/profile");
     }
 
@@ -51,7 +53,9 @@ const Login = (props) => {
         <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 }
-const mapStateToProps = (state) =>({
+
+const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
+    
 })
-export default connect(null, {login}) (Login);
+export default connect(mapStateToProps, {login}) (Login);
